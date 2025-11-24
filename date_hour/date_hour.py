@@ -31,7 +31,7 @@ class DateHour(str):
         instance = super().__new__(cls, normalized_str)
         instance._format_type = format_type
         return instance
-
+    
     @classmethod
     def _parse_string(cls, value: str) -> tuple[datetime, str]:
         '''Парсит строку в datetime и возвращает тип формата.'''

@@ -27,6 +27,17 @@ class TimeRange:
     def __str__(self) -> str:
         return f"TimeRange({self.start} - {self.stop})"
 
+    def __len__(self) -> int:
+        '''
+        Возвращает количество часов в диапазоне
+        '''
+        start_dt = self.start._get_datetime()
+        stop_dt = self.stop._get_datetime()
+        
+        hours_diff = int((stop_dt - start_dt).total_seconds() / 3600) + 1
+        return hours_diff
+
+
     @classmethod
     def __get_pydantic_core_schema__(
         cls,
@@ -52,16 +63,16 @@ if __name__ == '__main__':
     print("1. Самодостаточные периоды:")
     
     year = TimeRange("2024")
-    print(f"   Год: {year}")
+    print(f"   Год: {year} | Кол-во часов: {len(year)}")
     
     month = TimeRange("2024-01") 
-    print(f"   Месяц: {month}")
+    print(f"   Месяц: {month} | Кол-во часов: {len(month)}")
     
     day = TimeRange("2024-01-15")
-    print(f"   День: {day}")
+    print(f"   День: {day} | Кол-во часов: {len(day)}")
     
     hour = TimeRange("2024-01-15 14")
-    print(f"   Час: {hour}")
+    print(f"   Час: {hour} | Кол-во часов: {len(hour)}")
 
     print("\n2. Произвольные диапазоны:")
     custom = TimeRange("2024-01-01", "2024-01-15 14:30:00")
