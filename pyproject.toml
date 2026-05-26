@@ -17,4 +17,4 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = 'https://github.com/Sam-Strand/date_hour'
+Homepage = 'https://github.com/Sam-Strand/date_hour_py'
